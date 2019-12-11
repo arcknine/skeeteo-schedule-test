@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    title SkeeteoTest
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body
+    nav.white role="navigation" 
+      .nav-wrapper.container
+        a#logo-container.brand-logo href="#" LOGO
+        ul.right.hide-on-med-and-down
+          - if admin_signed_in?
+            li
+              = link_to "LOGOUT", destroy_admin_session_path, method: :delete
+        ul#nav-mobile.sidenav
+          li
+            a href="#"  Navbar Link
+        a.sidenav-trigger data-target="nav-mobile" href="#" 
+          i.material-icons menu
+
+    .container
+      = yield

@@ -1,0 +1,25 @@
+= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'login-form'}) do |f|
+  .row
+    .input-field.col.s12
+      h5.ml-4 Admin Sign in
+  .row.margin
+    .input-field.col.s12
+      i.material-icons.prefix.pt-2 person_outline
+      = f.email_field :email, autofocus: true, autocomplete: "email"
+      = f.label :email, class: "center-align"
+    .input-field.col.s12
+      i.material-icons.prefix.pt-2 lock_outline
+      = f.password_field :password, autocomplete: "current-password"
+      = f.label :password, class: "center-align"
+    - if devise_mapping.rememberable?
+      .row
+        .col.s12.m12.l12.ml-2.mt-1
+          p
+            = f.label :remember_me do
+              = f.check_box :remember_me
+              span Remember Me
+  .row
+    .input-field.col.s12
+      = f.button "Login", class: "btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12"
+
+  = render "admins/shared/links"

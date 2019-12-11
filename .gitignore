@@ -30,11 +30,12 @@
 /config/*.yml
 
 # Common ignored files
+/.bundle
+.DS_Store*
 /.ruby-version
 /.powenv
 /.rvmrc
 /.rbenv-version
 /.ruby-version
 /.powrc
-/.DS_Store*
 /TODO

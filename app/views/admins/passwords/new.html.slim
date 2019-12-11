@@ -1,0 +1,16 @@
+= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }, class: 'login-form') do |f|
+  .row
+    .input-field.col.s12
+      h5.ml-4 Forgot Password
+      p.ml-4 You can reset your password
+  .row.margin
+    .input-field.col.s12
+      i.material-icons.prefix.pt-2 mail_outline
+      = f.text_field :email, autofocus: true, autocomplete: "email"
+      = f.label :email
+  .row
+    .input-field.col.s12
+      = f.button "Reset Password", class: "btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12"
+
+  = render "admins/shared/links"
+

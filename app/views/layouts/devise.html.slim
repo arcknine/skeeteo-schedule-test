@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type"
+    title SkeeteoTest
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+  body.vertical-layout.page-header-light.vertical-menu-collapsible.vertical-dark-menu.1-column.login-bg.blank-page.blank-page data-col="1-column" data-menu="vertical-dark-menu" data-open="click" 
+    .row
+      .col.s12
+        .container
+          #login-page.row
+            .col.s12.m6.l4.z-depth-4.card-panel.border-radius-6.login-card.bg-opacity-8
+              = yield
