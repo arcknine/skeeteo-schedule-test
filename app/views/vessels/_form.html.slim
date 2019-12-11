@@ -1,0 +1,8 @@
+.row
+  .input-field.col.s12
+    i.material-icons.prefix add_box
+    = form.text_field :name, placeholder: "Vessel Name", class: 'validate'
+  .input-field.col.s12
+    = form.button :submit, class: 'btn waves-effect waves-light right'
+      | Submit
+      i.material-icons.right send

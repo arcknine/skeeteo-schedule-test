@@ -1,2 +1,37 @@
-h1 Home#index
-p Find me in app/views/home/index.html.slim
+.row
+  .col.s12.m12.l12
+    #striped-table.card.card.card-default.scrollspy
+      .card-content
+        h4.card-title 
+          | Vessels
+
+        .row
+          .col.s12
+            table.striped
+              thead
+                tr
+                  th Name
+                  th Status
+                  th # of Routes
+                  th Action
+              tbody
+                - @vessels.each do |v|
+                  tr
+                    td = v.name
+                    td
+                      span.new.badge.gradient-45deg-light-blue-cyan data-badge-caption=""
+                        = v.status
+                    td = v.routes.count
+                    td
+                      = link_to vessel_path(v)
+                        i.material-icons folder_open
+                      = link_to edit_vessel_path(v)
+                        i.material-icons edit
+                      = link_to '#'
+                        i.material-icons schedule
+                      = link_to vessel_path(v), method: 'DELETE', data: { confirm: "Are you sure?" }
+                        i.material-icons delete
+
+.fixed-action-btn.direction-top style=("bottom: 50px; right: 19px;") 
+  = link_to new_vessel_path, class: "btn-floating btn-large gradient-45deg-light-blue-cyan gradient-shadow", title: 'Add Vessel'
+    i.material-icons add

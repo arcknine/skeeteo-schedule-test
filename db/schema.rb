@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_09_124436) do
+ActiveRecord::Schema.define(version: 2019_12_11_153925) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,4 +27,37 @@ ActiveRecord::Schema.define(version: 2019_12_09_124436) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "routes", force: :cascade do |t|
+    t.string "name"
+    t.float "distance"
+    t.string "origin"
+    t.string "destination"
+    t.bigint "vessel_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["vessel_id"], name: "index_routes_on_vessel_id"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.bigint "route_id"
+    t.string "days"
+    t.time "start_time"
+    t.time "end_time"
+    t.text "remarks"
+    t.string "type"
+    t.date "date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["route_id"], name: "index_schedules_on_route_id"
+  end
+
+  create_table "vessels", force: :cascade do |t|
+    t.string "name"
+    t.boolean "decommissioned", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "routes", "vessels"
+  add_foreign_key "schedules", "routes"
 end

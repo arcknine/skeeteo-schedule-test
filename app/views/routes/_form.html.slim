@@ -1,0 +1,17 @@
+.row
+  .input-field.col.s12
+    i.material-icons.prefix directions
+    = form.text_field :name, placeholder: "Route Name", class: 'validate'
+  .input-field.col.s12
+    i.material-icons.prefix directions_bike
+    = form.number_field :distance, placeholder: "Distance in KM", class: 'validate', step: "0.01"
+  .input-field.col.s12
+    i.material-icons.prefix location_on
+    = form.text_field :origin, placeholder: "Origin", class: 'validate'
+  .input-field.col.s12
+    i.material-icons.prefix location_on
+    = form.text_field :destination, placeholder: "Destination", class: 'validate'
+  .input-field.col.s12
+    = form.button :submit, class: 'btn waves-effect waves-light right'
+      | Submit
+      i.material-icons.right send

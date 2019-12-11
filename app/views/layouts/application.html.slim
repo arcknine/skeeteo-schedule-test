@@ -10,8 +10,9 @@ html
   body
     nav.white role="navigation" 
       .nav-wrapper.container
-        a#logo-container.brand-logo href="#" LOGO
+        a#logo-container.brand-logo href="#" SKEETEO TEST
         ul.right.hide-on-med-and-down
+          li = link_to "HOME", root_path
           - if admin_signed_in?
             li
               = link_to "LOGOUT", destroy_admin_session_path, method: :delete
@@ -21,5 +22,6 @@ html
         a.sidenav-trigger data-target="nav-mobile" href="#" 
           i.material-icons menu
 
+    = render 'shared/breadcrumb'
     .container
       = yield

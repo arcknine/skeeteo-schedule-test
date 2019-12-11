@@ -1,0 +1,35 @@
+.row
+  .col.s12.m12.l12
+    #striped-table.card.card.card-default.scrollspy
+      .card-content
+        h4.card-title 
+          = "#{@vessel.name} > ROUTES"
+
+        .row
+          .col.s12
+            table.striped
+              thead
+                tr
+                  th Route Name
+                  th Distance
+                  th Origin
+                  th Destination
+                  th Action
+              tbody
+               - @routes.each do |r|
+                tr
+                  td = r.name
+                  td = r.metric_distance
+                  td = r.origin
+                  td = r.destination
+                  td
+                    = link_to vessel_route_path(vessel_id: r.vessel_id, id: r.id)
+                      i.material-icons folder_open
+                    = link_to edit_vessel_route_path(vessel_id: r.vessel_id, id: r.id)
+                      i.material-icons edit
+                    = link_to vessel_route_path(vessel_id: r.vessel_id, id: r.id), method: 'DELETE', data: { confirm: "Are you sure?" }
+                      i.material-icons delete
+
+.fixed-action-btn.direction-top style=("bottom: 50px; right: 19px;") 
+  = link_to new_vessel_route_path(@vessel), class: "btn-floating btn-large gradient-45deg-light-blue-cyan gradient-shadow", title: 'Add Vessel'
+    i.material-icons add

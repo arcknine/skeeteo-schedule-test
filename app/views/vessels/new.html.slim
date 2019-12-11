@@ -1,0 +1,8 @@
+.row
+  = form_with model: @vessel, html: {class: "col s12"} do |f|
+    .card
+      .card-content.pb-0
+        .card-header.mb-2
+          h4.card-title Create Vessel
+        = render 'form', form: f
+

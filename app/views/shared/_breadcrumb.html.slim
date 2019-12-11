@@ -1,0 +1,15 @@
+- @page_title ||= nil
+#breadcrumbs-wrapper.breadcrumbs-bg-image style=("background-image: url(/assets/breadcrumb-bg.jpg);") 
+  .container
+    .row
+      .col.s12.m6.l6
+        h5.breadcrumbs-title.mt-0.mb-0
+          span = @page_title
+      / .col.s12.m6.l6.right-align-md
+      /   ol.breadcrumbs.mb-0
+      /     li.breadcrumb-item
+      /       a href="index.html"  Home
+      /     li.breadcrumb-item
+      /       a href="#"  User
+      /     li.breadcrumb-item.active
+      /       | Users List

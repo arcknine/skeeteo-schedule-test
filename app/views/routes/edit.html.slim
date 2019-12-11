@@ -1,0 +1,8 @@
+.row
+  = form_with model: @route, url: vessel_route_path(vessel_id: @route.vessel_id, id: @route.id), html: {class: "col s12"} do |f|
+    .card
+      .card-content.pb-0
+        .card-header.mb-2
+          h4.card-title Create Route
+        = render 'form', form: f
+
