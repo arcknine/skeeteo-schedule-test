@@ -1,7 +1,7 @@
 tr
   td = schedule.travel_code
   - if schedule.type == 'Schedule::Regular'
-    td = schedule.days.map { |d| Schedule::DAYS[d.to_sym] }.join(", ")
+    td = schedule.nice_day_format_to_s
   - else schedule.type == 'Schedule::Special'
     td = schedule.date.strftime("%b %d, %Y")
   - if schedule.start_time.nil?
@@ -14,7 +14,9 @@ tr
     td = schedule.end_time.strftime("%I:%M %P")
   td = schedule.remarks
   td
-    = link_to edit_vessel_route_schedule_path(vessel_id: schedule.vessel_id, route_id: schedule.route_id, id: schedule.id), class: 'white-text'
+    - edit_path = @route.present? ? edit_vessel_route_schedule_path(vessel_id: schedule.vessel_id, route_id: schedule.route_id, id: schedule.id) : edit_vessel_schedule_path(vessel_id: schedule.vessel_id, id: schedule.id)
+    - delete_path = @route.present? ? vessel_route_schedule_path(vessel_id: schedule.vessel_id, route_id: schedule.route_id, id: schedule.id) : vessel_schedule_path(vessel_id: schedule.vessel_id, id: schedule.id)
+    = link_to edit_path, class: 'white-text'
       i.material-icons edit
-    = link_to vessel_route_schedule_path(vessel_id: schedule.vessel_id, route_id: schedule.route_id, id: schedule.id), method: 'DELETE', data: { confirm: "Are you sure?" }, class: 'white-text'
+    = link_to delete_path, method: 'DELETE', data: { confirm: "Are you sure?" }, class: 'white-text'
       i.material-icons delete

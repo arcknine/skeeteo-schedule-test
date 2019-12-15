@@ -1,63 +1,65 @@
-- if @route.schedules.active.regular.any?
-  .col.s12.m3.l3
-    .card-panel.gradient-shadow.white-text.gradient-45deg-light-blue-cyan
-      h5.white-text Regular Schedules
-      table.responsive-table
-        thead
-          tr
-            td Code
-            td Days
-            td Departure Time
-            td Arrival Time
-            td Remarks
-            td Action
-          tbody
-            = render partial: 'schedules/schedule', collection: @route.schedules.active.regular
+- if @route.present?
+  - if @route.schedules.active.regular.any?
+    .col.s12.m12.l12
+      .card-panel.gradient-shadow.white-text.gradient-45deg-light-blue-cyan
+        h5.white-text Regular Schedules
+        table.responsive-table
+          thead
+            tr
+              td Code
+              td Days
+              td Departure Time
+              td Arrival Time
+              td Remarks
+              td Action
+            tbody
+              = render partial: 'schedules/schedule', collection: @route.schedules.active.regular
 
-- if @route.schedules.active.special.any?
-  .col.s12.m3.l3
-    .card-panel.gradient-shadow.white-text.gradient-45deg-cyan-light-green
-      h5.white-text Special Schedules
-      table.responsive-table
-        thead
-          tr
-            td Code
-            td Departure Date
-            td Departure Time
-            td Arrival Time
-            td Remarks
-            td Action
-          tbody
-            = render partial: 'schedules/schedule', collection: @route.schedules.active.special
+  - if @route.schedules.active.special.any?
+    .col.s12.m12.l12
+      .card-panel.gradient-shadow.white-text.gradient-45deg-cyan-light-green
+        h5.white-text Special Schedules
+        table.responsive-table
+          thead
+            tr
+              td Code
+              td Departure Date
+              td Departure Time
+              td Arrival Time
+              td Remarks
+              td Action
+            tbody
+              = render partial: 'schedules/schedule', collection: @route.schedules.active.special
 
-- if @route.schedules.active.maintenance.any?
-  .col.s12.m3.l3
-    .card-panel.gradient-shadow.white-text.gradient-45deg-deep-orange-orange
-      h5.white-text Maintenance Schedules
-      table.responsive-table
-        thead
-          tr
-            td Code
-            td Maintenace Date
-            td Start Time
-            td End Time
-            td Remarks
-            td Action
-          tbody
-            = render partial: 'schedules/schedule', collection: @route.schedules.active.maintenance
+- if @route.nil?
+  - if @vessel.schedules.active.maintenance.any?
+    .col.s12.m12.l12
+      .card-panel.gradient-shadow.white-text.gradient-45deg-deep-orange-orange
+        h5.white-text Maintenance Schedules
+        table.responsive-table
+          thead
+            tr
+              td Code
+              td Maintenace Date
+              td Start Time
+              td End Time
+              td Remarks
+              td Action
+            tbody
+              = render partial: 'schedules/schedule', collection: @vessel.schedules.active.maintenance
 
-- if @route.schedules.active.idle.any?
-  .col.s12.m3.l3
-    .card-panel.gradient-shadow.white-text.gradient-45deg-purple-deep-purple
-      h5.white-text No Travel Schedules
-      table.responsive-table
-        thead
-          tr
-            td Code
-            td No Travel Date
-            td Start Time
-            td End Time
-            td Remarks
-            td Action
-          tbody
-            = render partial: 'schedules/schedule', collection: @route.schedules.active.idle
+  - if @vessel.schedules.active.idle.any?
+    .col.s12.m12.l12
+      .card-panel.gradient-shadow.white-text.gradient-45deg-purple-deep-purple
+        h5.white-text No Travel Schedules
+        table.responsive-table
+          thead
+            tr
+              td Code
+              td No Travel Date
+              td Start Time
+              td End Time
+              td Remarks
+              td Action
+            tbody
+              = render partial: 'schedules/schedule', collection: @vessel.schedules.active.idle

@@ -30,6 +30,11 @@
                     = link_to vessel_route_path(vessel_id: r.vessel_id, id: r.id), method: 'DELETE', data: { confirm: "Are you sure?" }
                       i.material-icons delete
 
+.section.users-view
+  .card
+    .card-content
+      = render 'schedules/schedules'
+
 .fixed-action-btn.direction-top style=("bottom: 50px; right: 19px;") 
   = link_to new_vessel_route_path(@vessel), class: "btn-floating btn-large gradient-45deg-light-blue-cyan gradient-shadow", title: 'Add Vessel'
     i.material-icons add

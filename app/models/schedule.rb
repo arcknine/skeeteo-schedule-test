@@ -1,12 +1,11 @@
 class Schedule < ApplicationRecord
-  belongs_to :route
+  belongs_to :route, optional: true
   belongs_to :vessel
 
   serialize :days, Array
 
-  scope :active,        -> { where("(? BETWEEN start_time AND end_time AND date >= ?)  OR date >= ? OR type = ?", Time.now, Date.today, Date.today, 'Schedule::Regular') }
+  scope :active,        -> { where("(? BETWEEN start_time AND end_time AND date >= ?)  OR date >= ? OR type = ?", Time.now.to_s, Date.today, Date.today, 'Schedule::Regular') }
   scope :in_date_range, -> (start_date, end_date) { where("(date BETWEEN ? AND ?) OR type = ?", start_date, end_date, 'Schedule::Regular') }
-  scope :sort_position, -> (order = 'ASC') { order("position #{order}") }
 
   scope :regular,     -> { where(type: 'Schedule::Regular') }
   scope :maintenance, -> { where(type: 'Schedule::Maintenance') }
@@ -14,13 +13,13 @@ class Schedule < ApplicationRecord
   scope :idle,        -> { where(type: 'Schedule::Idle') }
 
   DAYS = {
-    M: 'Monday',
-    T: 'Tuesday',
-    W: 'Wednesday',
-    R: 'Thursday',
-    F: 'Friday',
-    S: 'Saturday',
-    U: 'Sunday'
+    '0' => 'Sunday',
+    '1' => 'Monday',
+    '2' => 'Tuesday',
+    '3' => 'Wednesday',
+    '4' => 'Thursday',
+    '5' => 'Friday',
+    '6' => 'Saturday',
   }
 
   def is_active?

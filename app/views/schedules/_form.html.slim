@@ -1,21 +1,23 @@
 .row
   .input-field.col.s12.radio-type
-    .col.s12.m3.l3
-      label
-        = form.radio_button :type, 'Schedule::Regular', class: 'with-gap', checked: true, data: { start: "Departure Time", end: "Arrival Time" }
-        span Regular
-    .col.s12.m3.l3
-      label
-        = form.radio_button :type, 'Schedule::Maintenance', class: 'with-gap', data: { placeholder: "Maintenance Date", start: "Start Time", end: "End Time" }
-        span Maintenance
-    .col.s12.m3.l3
-      label
-        = form.radio_button :type, 'Schedule::Special', class: 'with-gap', data: { placeholder: "Special Trip Date", start: "Departure Time", end: "Arrival Time" }
-        span Special
-    .col.s12.m3.l3
-      label
-        = form.radio_button :type, 'Schedule::Idle', class: 'with-gap', data: { placeholder: "No Trip Date", start: "Start Time", end: "End Time" }
-        span No Trip
+    - if @route.present?
+      .col.s12.m4.l4
+        label
+          = form.radio_button :type, 'Schedule::Regular', class: 'with-gap', checked: true, data: { start: "Departure Time", end: "Arrival Time" }
+          span Regular
+      .col.s12.m4.l4
+        label
+          = form.radio_button :type, 'Schedule::Special', class: 'with-gap', data: { placeholder: "Special Trip Date", start: "Departure Time", end: "Arrival Time" }
+          span Special
+    - else
+      .col.s12.m4.l4
+        label
+          = form.radio_button :type, 'Schedule::Maintenance', class: 'with-gap', checked: true, data: { placeholder: "Maintenance Date", start: "Start Time", end: "End Time" }
+          span Maintenance
+      .col.s12.m4.l4
+        label
+          = form.radio_button :type, 'Schedule::Idle', class: 'with-gap', data: { placeholder: "No Trip Date", start: "Start Time", end: "End Time" }
+          span No Trip
   .input-field.col.s12#not-regular style="display: none"
     i.material-icons.prefix date_range
     = form.text_field :date, placeholder: "Date", class: 'datepicker validate', disabled: true, value: "#{form.object.date.strftime("%b %d, %Y") if form.object.date.present? && !form.object.new_record?}"
@@ -39,6 +41,7 @@
 
 coffee:
   updateForm = (element) ->
+    console.log($(element).val())
     $("#schedule_start_time").attr 'placeholder', $(element).data('start')
     $("#schedule_end_time").attr 'placeholder', $(element).data('end')
 

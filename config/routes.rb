@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       resources :schedules, except: [:index, :show]
     end
 
+    resources :schedules, except: [:index, :show]
     member do
       get :calendar
       get :feed
