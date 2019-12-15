@@ -5,7 +5,10 @@
       .col.s12.m6.l6
         h5.breadcrumbs-title.mt-0.mb-0
           span = @page_title
-      / .col.s12.m6.l6.right-align-md
+      .col.s12.m6.l6.right-align-md
+        ol.breadcrumbs.mb-0.mt-0
+          li.breadcrumb-item
+            = link_to 'Back', :back
       /   ol.breadcrumbs.mb-0
       /     li.breadcrumb-item
       /       a href="index.html"  Home

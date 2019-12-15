@@ -1,0 +1,20 @@
+tr
+  td = schedule.travel_code
+  - if schedule.type == 'Schedule::Regular'
+    td = schedule.days.map { |d| Schedule::DAYS[d.to_sym] }.join(", ")
+  - else schedule.type == 'Schedule::Special'
+    td = schedule.date.strftime("%b %d, %Y")
+  - if schedule.start_time.nil?
+    td = schedule.date.to_datetime.beginning_of_day.strftime("%I:%M %P")
+  - else
+    td = schedule.start_time.strftime("%I:%M %P")
+  - if schedule.end_time.nil?
+    td = schedule.date.to_datetime.end_of_day.strftime("%I:%M %P")
+  - else
+    td = schedule.end_time.strftime("%I:%M %P")
+  td = schedule.remarks
+  td
+    = link_to edit_vessel_route_schedule_path(vessel_id: schedule.vessel_id, route_id: schedule.route_id, id: schedule.id), class: 'white-text'
+      i.material-icons edit
+    = link_to vessel_route_schedule_path(vessel_id: schedule.vessel_id, route_id: schedule.route_id, id: schedule.id), method: 'DELETE', data: { confirm: "Are you sure?" }, class: 'white-text'
+      i.material-icons delete

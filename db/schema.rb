@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_11_153925) do
+ActiveRecord::Schema.define(version: 2019_12_14_082049) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_12_11_153925) do
 
   create_table "schedules", force: :cascade do |t|
     t.bigint "route_id"
+    t.bigint "vessel_id"
     t.string "days"
     t.time "start_time"
     t.time "end_time"
@@ -48,7 +49,9 @@ ActiveRecord::Schema.define(version: 2019_12_11_153925) do
     t.date "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "position"
     t.index ["route_id"], name: "index_schedules_on_route_id"
+    t.index ["vessel_id"], name: "index_schedules_on_vessel_id"
   end
 
   create_table "vessels", force: :cascade do |t|
@@ -60,4 +63,5 @@ ActiveRecord::Schema.define(version: 2019_12_11_153925) do
 
   add_foreign_key "routes", "vessels"
   add_foreign_key "schedules", "routes"
+  add_foreign_key "schedules", "vessels"
 end

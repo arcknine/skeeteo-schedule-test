@@ -1,2 +1,22 @@
-h1 Routes#Show
-p Find me in app/views/routes/update.html.slim
+.section.users-view
+  .card-panel
+    .row
+      .col.s12.m7
+        .display-flex.media
+          .media-body
+            h6.media-heading
+              span.users-view-name = @route.name
+              br
+              span.users-view-username.grey-text = "(#{@route.origin} - #{@route.destination})"
+              br
+              span.grey-text = "Distance: #{@route.metric_distance}"
+            span ID:
+            span.users-view-id = @route.id
+      .col.s12.m5.quick-action-btns.display-flex.justify-content-end.align-items-center.pt-2
+        = link_to new_vessel_route_schedule_path(vessel_id: @route.vessel_id, route_id: @route.id), class: 'btn-small indigo'
+          i.material-icons.left schedule
+          | Create Schedule
+
+  .card
+    .card-content
+      = render 'schedules/schedules'

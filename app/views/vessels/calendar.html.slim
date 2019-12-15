@@ -1,0 +1,23 @@
+/ = @vessel.schedules.to_json
+.row
+  .col.s12
+    .card
+      .card-content
+        h4.card-title data-date="#{Date.today}" = "#{@vessel.name} Schedules"
+        #calendar
+
+coffee:
+  $(document).ready ->
+    calendarEl = document.getElementById('calendar')
+    calendar = new (FullCalendar.Calendar)(calendarEl,
+      plugins: [
+        'interaction'
+        'dayGrid'
+      ]
+      defaultDate: $(".card-title").data('date')
+      editable: false
+      eventLimit: true
+      events: '/vessels/3/feed'
+    )
+    calendar.render()
+    return

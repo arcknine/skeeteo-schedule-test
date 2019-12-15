@@ -1,0 +1,54 @@
+.fc {
+  .fc-event {
+    padding: 4px 7px;
+    color: #fff;
+    border: none;
+    background: #2196f3;
+  }
+
+  .fc-button {
+    height: auto;
+    padding: 10px;
+    color: #fff !important;
+    border-color: #ff9100 !important;
+    border-radius: 2px;
+    background: #ff9100 !important;
+    text-shadow: none;
+  }
+
+  .fc-button-primary {
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:not(:disabled) {
+      &.fc-button-active:focus, &:active:focus {
+        box-shadow: none;
+      }
+    }
+  }
+
+  .fc-content-skeleton tr {
+    border-bottom: none;
+  }
+
+  td.fc-day {
+    border-width: 1px !important;
+  }
+}
+
+.fc-toolbar {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .fc-center, .fc-left {
+    margin-bottom: .5rem;
+  }
+}
