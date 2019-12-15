@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## System dependencies
 
-Things you may want to cover:
+* Ruby version 2.5.0
+* Rails version 5.2.3
 
-* Ruby version
+## Running in localhost
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. run bundler `bundle install`
+2. create database `rake db:setup`
+3. start server `rails s`
+4. use any web browser and visit http://localhost:3000
+4. login using email: `admin@email.com` and password: `passw0rd`
