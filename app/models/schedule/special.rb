@@ -9,7 +9,7 @@ class Schedule::Special < Schedule
     {
       title: "#{self.route.origin} - #{self.route.destination}",
       start: self.start_datetime,
-      end: self.start_datetime,
+      end: self.end_datetime,
       color: 'green'
     }
   end

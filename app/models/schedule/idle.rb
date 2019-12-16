@@ -7,8 +7,9 @@ class Schedule::Idle < Schedule
     {
       title: "No Travel (#{self.remarks})",
       start: self.start_time ? self.start_datetime : self.date,
-      end: self.end_time ? self.start_datetime : self.date,
-      color: 'purple'
+      end: self.end_time ? self.end_datetime : self.date,
+      color: 'purple',
+      overlap: true,
     }
   end
 end

@@ -21,8 +21,8 @@ coffee:
       defaultDate: $(".card-title").data('date')
       editable: false
       eventLimit: true
-      slotEventOverlap: false
       events: '/vessels/' + $(".card-title").data('id') + '/feed'
+      eventOverlap: false
     )
     calendar.render()
     return

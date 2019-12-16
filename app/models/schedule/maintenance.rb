@@ -9,8 +9,9 @@ class Schedule::Maintenance < Schedule
     {
       title: 'Maintenance',
       start: self.start_datetime,
-      end: self.start_datetime,
-      color: 'orange'
+      end: self.end_datetime,
+      color: 'orange',
+      overlap: true,
     }
   end
 end
