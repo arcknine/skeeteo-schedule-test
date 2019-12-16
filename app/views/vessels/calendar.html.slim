@@ -3,7 +3,7 @@
   .col.s12
     .card
       .card-content
-        h4.card-title data-date="#{Date.today}" = "#{@vessel.name} Schedules"
+        h4.card-title data-id="#{@vessel.id}" data-date="#{Date.today}" = "#{@vessel.name} Schedules"
         #calendar
 
 .fixed-action-btn.direction-top style=("bottom: 50px; right: 19px;") 
@@ -22,7 +22,7 @@ coffee:
       editable: false
       eventLimit: true
       slotEventOverlap: false
-      events: '/vessels/3/feed'
+      events: '/vessels/' + $(".card-title").data('id') + '/feed'
     )
     calendar.render()
     return
